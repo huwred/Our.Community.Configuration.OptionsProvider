@@ -1,0 +1,21 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <OurCommunityConfigurationOptionsProviderContentFilesPath>$(MSBuildThisFileDirectory)..\App_Plugins\Our.Community.Configuration.OptionsProvider\**\*.*</OurCommunityConfigurationOptionsProviderContentFilesPath>
+  </PropertyGroup>
+
+  <Target Name="CopyOurCommunityConfigurationOptionsProviderAssets" BeforeTargets="Build">
+    <ItemGroup>
+      <OurCommunityConfigurationOptionsProviderContentFiles Include="$(OurCommunityConfigurationOptionsProviderContentFilesPath)" />
+    </ItemGroup>
+    <Message Text="Copying Our.Community.Configuration.OptionsProvider files: $(OurCommunityConfigurationOptionsProviderContentFilesPath) - #@(OurCommunityConfigurationOptionsProviderContentFiles->Count()) files" Importance="high" />
+    <Copy SourceFiles="@(OurCommunityConfigurationOptionsProviderContentFiles)" DestinationFiles="@(OurCommunityConfigurationOptionsProviderContentFiles->'$(MSBuildProjectDirectory)\App_Plugins\Our.Community.Configuration.OptionsProvider\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
+  </Target>
+
+  <Target Name="ClearOurCommunityConfigurationOptionsProviderAssets" BeforeTargets="Clean">
+    <ItemGroup>
+      <OurCommunityConfigurationOptionsProviderDir Include="$(MSBuildProjectDirectory)\App_Plugins\Our.Community.Configuration.OptionsProvider\" />
+    </ItemGroup>
+    <Message Text="Clear old Our.Community.Configuration.OptionsProvider data" Importance="high" />
+    <RemoveDir Directories="@(OurCommunityConfigurationOptionsProviderDir)" />
+  </Target>
+</Project>

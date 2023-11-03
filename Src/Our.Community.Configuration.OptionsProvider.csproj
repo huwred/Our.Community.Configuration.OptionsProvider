@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
+    <ContentTargetFolders>.</ContentTargetFolders>
+    <Product>Our.Community.Configuration.OptionsProvider</Product>
+    <PackageId>Our.Community.Configuration.OptionsProvider</PackageId>
+    <Title>Our.Community.Configuration.OptionsProvider</Title>
+    <Description>IOptions provider for Our.Community.Configuration</Description>
+    <PackageTags>umbraco-marketplace umbraco plugin package</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup Condition="$(TargetFramework) == 'net7.0'">
+    <PackageReference Include="Effortless.Net.Core.Encryption" Version="1.3.1" />
+    <PackageReference Include="Umbraco.Cms.Persistence.Sqlite" Version="12.2.0" />
+    <PackageReference Include="Umbraco.Cms.Persistence.SqlServer" Version="12.2.0" />
+    <PackageReference Include="Umbraco.Cms.Web.Website" Version="[11.0.0,13.0.0)" />
+    <PackageReference Include="Umbraco.Cms.Web.BackOffice" Version="[11.0.0,13.0.0)" />
+    <PackageReference Include="Our.Community.Configuration" Version="1.0.0" />
+  </ItemGroup>
+  <ItemGroup Condition="$(TargetFramework) == 'net6.0'">
+    <PackageReference Include="Effortless.Net.Core.Encryption" Version="1.3.1" />
+    <PackageReference Include="Umbraco.Cms.Persistence.Sqlite" Version="10.7.0" />
+    <PackageReference Include="Umbraco.Cms.Persistence.SqlServer" Version="10.7.0" />
+    <PackageReference Include="Umbraco.Cms.Web.Website" Version="[10.0.0,11.0.0)" />
+    <PackageReference Include="Umbraco.Cms.Web.BackOffice" Version="[10.0.0,11.0.0)" />
+    <PackageReference Include="Our.Community.Configuration" Version="1.0.0" />
+
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="App_Plugins\Our.Community.Configuration.OptionsProvider\**" ExcludeFromSingleFile="true" CopyToPublishDirectory="Always" />
+    <None Include="buildTransitive\**" Pack="true" PackagePath="buildTransitive" />
+  </ItemGroup>
+
+</Project>

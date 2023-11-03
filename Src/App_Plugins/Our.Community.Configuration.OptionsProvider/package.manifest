@@ -1,0 +1,5 @@
+{
+    "id": "Our.Community.Configuration.OptionsProvider",
+    "name": "Our.Community.Configuration.OptionsProvider",
+    "allowPackageTelemetry": true
+}
